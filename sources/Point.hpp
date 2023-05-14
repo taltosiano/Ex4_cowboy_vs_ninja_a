@@ -1,3 +1,7 @@
+#ifndef POINT_HPP
+#define POINT_HPP
+
+#pragma once
 #include <cmath>
 #include <iostream>
 
@@ -15,3 +19,4 @@ private:
     Point moveTowards(const Point& source, const Point& dest, double distance);
 };
 
+#endif

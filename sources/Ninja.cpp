@@ -1,26 +1,29 @@
 #include <cmath>
 #include <iostream>
 #include <string>
+#include "Point.hpp"
 #include "Ninja.hpp"
 #include "Character.hpp"
 
 using namespace std;
 
-class Ninja : public Character {
+namespace ariel {
     Ninja::Ninja(const string& name, const Point& location, int hitPoints, int speed)
     : Character(name, location, hitPoint), speed(speed) {}
 
-    void Ninja::move(const Characte& enemy){}
-    void Ninja::slash(const Characte& enemy){}
+    void Ninja::move( Characte* enemy){}
+    void Ninja::slash( Characte* enemy){}
     int Ninja::getSpeed(){
-        return speed;
+        return this->speed;
     }
-    string Ninja::getType(){}
+    string Ninja::getType(){
+        return "";
+    }
 }
 
 class YoungNinja : public Ninja {
 public:
-    YoungNinja(Point location, std::string name) : Ninja(location, 100, name, 14) {}
+    YoungNinja(Point location, string name) : Ninja(location, 100/*hit point*/, name, 14/*ninja speed*/) {}
 
     std::string getType() override {
         return "NY";
@@ -29,7 +32,7 @@ public:
 
 class TrainedNinja : public Ninja {
 public:
-    TrainedNinja(Point location, std::string name) : Ninja(location, 120, name, 12) {}
+    TrainedNinja(Point location, string name) : Ninja(location, 120, name, 12) {}
 
     std::string getType() override {
         return "TN";
@@ -38,7 +41,7 @@ public:
 
 class OldNinja : public Ninja {
 public:
-    OldNinja(Point location, std::string name) : Ninja(location, 150, name, 8) {}
+    OldNinja(Point location, string name) : Ninja(location, 150, name, 8) {}
 
     std::string getType() override {
         return "ON";

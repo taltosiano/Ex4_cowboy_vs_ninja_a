@@ -1,3 +1,7 @@
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
+
+#pragma once
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -10,7 +14,7 @@ class Character{
         string name;
 
     public:
-    Character(const Point& location, int hitPoint, string name);
+    Character( Point location, int hitPoint, string name);
     virtual ~Character() {}
     virtual bool isAlive();
     virtual double distance(const Character& other);
@@ -20,3 +24,4 @@ class Character{
     virtual void print();
 
 }
+#endif

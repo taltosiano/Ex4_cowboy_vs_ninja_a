@@ -1,3 +1,7 @@
+#ifndef COWBOY_HPP
+#define COWBOY_HPP
+
+#pragma once
 #include <cmath>
 #include <iostream>
 #include <string>
@@ -8,8 +12,11 @@ class Cowboy : public Character {
     int numOfBoolets;
 
     public:
-    Cowboy(const string& name, const Point& location);
+    Cowboy(string name,  Point location);
     void shoot(const Characte& enemy);
     bool hasboolets();
     void reload();
+    int getNumOfBoolets();
 }
+
+#endif

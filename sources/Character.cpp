@@ -6,21 +6,29 @@
 
 using namespace std;
 
-class Character{
+namespace ariel{
 
-    Character::Character(const string& name, const Point& location, int hitPoint)
+    Character::Character(string name, Point location, int hitPoint)
     : name(name), location(location), hitPoint(hitPoint) {}
 
-    bool Character::isAlive(){}
+    bool Character::isAlive(){
+        return true;
+    }
 
-    double Character::distance(const Character& other){}
+    double Character::distance(const Character& other){
+        return 0.0
+    }
 
     void Character::hit(int num) {}
 
-    string Character::getName() {}
+    string Character::getName() {
+        return this->name;
+    }
 
-    Point Character::getLocation(){}
+    Point Character::getLocation(){
+        return this->location
+    }
 
     void Character::print(){}
-
+}
 

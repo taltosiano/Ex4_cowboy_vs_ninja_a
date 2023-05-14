@@ -1,5 +1,5 @@
-#ifndef TEAM_HPP
-#define TEAM_HPP
+#ifndef SMARTTEAM_HPP
+#define SMARTTEAM_HPP
 
 #pragma once
 #include <iostream>
@@ -7,13 +7,10 @@
 #include <algorithm>
 #include "Point.hpp"
 #include "Character.hpp"
-#include "Cowboy.hpp"
-#include "Ninja.hpp"
 
-using namespace std;
-
-class Team{
-    private:
+namespace ariel{
+class SmartTeam{
+private:
     Character* leader;
     vector<Character> members;
 
@@ -24,6 +21,7 @@ class Team{
     void attack(Team* enemy);
     int stillAlive();
     string print();
-}
 
+};
+}
 #endif

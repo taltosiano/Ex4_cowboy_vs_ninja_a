@@ -6,9 +6,9 @@
 
 using namespace std;
 
-class Cowboy : public Character {
+namespace ariel{
 
-Cowboy::Cowboy(const string& name, const Point& location)
+Cowboy::Cowboy(string name, Point location)
     : Character(name, location, 110), numOfBoolets(6) {}
 
 void Cowboy:shoot(const Characte& enemy){}
@@ -16,5 +16,9 @@ bool Cowboy::hasboolets(){
     return true;
 }
 void Cowboy::reload(){}
+
+int Cowboy::getNumOfBoolets(){
+    this->numOfBoolets;
+}
 
 }
