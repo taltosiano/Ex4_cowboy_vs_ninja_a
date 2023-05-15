@@ -15,10 +15,10 @@ private:
     vector<Character> members;
 
     public:
-    Team(Character* leader);
-    ~Team();
+    SmartTeam(Character* leader);
+    ~SmartTeam();
     void add(Character* member);
-    void attack(Team* enemy);
+    void attack(SmartTeam* enemy);
     int stillAlive();
     string print();
 

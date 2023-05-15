@@ -18,7 +18,7 @@ private:
     Team2(Character* leader);
     ~Team2();
     void add(Character* member);
-    void attack(Team* enemy);
+    void attack(Team2* enemy);
     int stillAlive();
     string print();
 

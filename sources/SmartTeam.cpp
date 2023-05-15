@@ -7,7 +7,7 @@
 namespace ariel{
         SmartTeam::SmartTeam(Character* leader){}
         void SmartTeam::add(Character *member){}
-        void SmartTeam::attack(Team *enemy){}
+        void SmartTeam::attack(SmartTeam *enemy){}
         int SmartTeam::stillAlive(){return 0;}
         string SmartTeam::print(){return "";}
         SmartTeam::~SmartTeam(){}

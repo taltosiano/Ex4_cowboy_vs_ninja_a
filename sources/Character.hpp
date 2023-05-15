@@ -5,8 +5,10 @@
 #include <iostream>
 #include <string>
 #include <cmath>
-#include "Point.h"
+#include "Point.hpp"
 
+using namespace std;
+namespace ariel {
 class Character{
     private:
         Point location;
@@ -14,14 +16,16 @@ class Character{
         string name;
 
     public:
-    Character( Point location, int hitPoint, string name);
-    virtual ~Character() {}
+    Character(Point location, int hitPoint, string name);
+    virtual ~Character() = default;
     virtual bool isAlive();
-    virtual double distance(const Character& other);
+    virtual double distance(Character* other);
     virtual void hit(int num);
     virtual string getName();
     virtual Point getLocation();
-    virtual void print();
+    virtual string print();
+    int getHitPoints();
 
+};
 }
 #endif

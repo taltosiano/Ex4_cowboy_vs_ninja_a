@@ -19,4 +19,11 @@ void Point::print(){
 Point Point::moveTowards(const Point& source, const Point& dest, double distance){  
     return (*this);
 }
+
+double Point::getX(){
+    return this->x;
+}
+double Point::getY(){
+    return this->y;
+}
 }

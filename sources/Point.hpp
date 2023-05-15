@@ -5,18 +5,20 @@
 #include <cmath>
 #include <iostream>
 
-
+namespace ariel {
 class Point {
-public:
+private:
     double x;
     double y;
 
-private:
+public:
     Point();
     Point(double x, double y);
     double distance(const Point& p);
     void print();
     Point moveTowards(const Point& source, const Point& dest, double distance);
+    double getX();
+    double getY();
 };
-
+}
 #endif

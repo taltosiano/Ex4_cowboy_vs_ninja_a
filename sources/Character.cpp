@@ -8,15 +8,15 @@ using namespace std;
 
 namespace ariel{
 
-    Character::Character(string name, Point location, int hitPoint)
-    : name(name), location(location), hitPoint(hitPoint) {}
+    Character::Character(Point location, int hitPoint, string name)
+    : location(location), hitPoint(hitPoint), name(name) {}
 
     bool Character::isAlive(){
         return true;
     }
 
-    double Character::distance(const Character& other){
-        return 0.0
+    double Character::distance( Character* other){
+        return 0.0;
     }
 
     void Character::hit(int num) {}
@@ -26,9 +26,15 @@ namespace ariel{
     }
 
     Point Character::getLocation(){
-        return this->location
+        return this->location;
     }
 
-    void Character::print(){}
+    string Character::print(){
+        return "";
+    }
+
+    int Character::getHitPoints(){
+        return this->hitPoint;
+    }
 }
 

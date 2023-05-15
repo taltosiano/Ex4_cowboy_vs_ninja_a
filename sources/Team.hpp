@@ -8,10 +8,13 @@
 #include "Point.hpp"
 #include "Character.hpp"
 #include "Cowboy.hpp"
-#include "Ninja.hpp"
+#include "YoungNinja.hpp"
+#include "TrainedNinja.hpp"
+#include "OldNinja.hpp"
 
 using namespace std;
 
+namespace ariel {
 class Team{
     private:
     Character* leader;
@@ -24,6 +27,7 @@ class Team{
     void attack(Team* enemy);
     int stillAlive();
     string print();
+};
 }
 
 #endif

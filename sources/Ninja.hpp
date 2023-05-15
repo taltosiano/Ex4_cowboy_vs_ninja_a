@@ -7,16 +7,19 @@
 #include <string>
 #include "Character.hpp"
 
+namespace ariel
+{
 class Ninja : public Character {
     private:
     int speed; 
 
     public:
-    Ninja( string name,  Point location, int hitPoint, int speed): Character(location, hitPoint, std::move(name)), speed(speed){}
-    void move( Characte* enemy);
-    void slash( Characte* enemy);
+    Ninja(Point location, int hitPoint, string name, int speed): Character(location, hitPoint, std::move(name)), speed(speed){}
+    void move( Character* enemy);
+    void slash( Character* enemy);
     int getSpeed();
-    string getType();
-}
+    string print() override;
+};
 
+}
 #endif
