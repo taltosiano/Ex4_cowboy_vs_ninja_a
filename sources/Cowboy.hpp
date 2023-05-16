@@ -18,7 +18,7 @@ class Cowboy : public Character {
     bool hasboolets();
     void reload();
     int getNumOfBoolets();
-    string print() override;
+    string print();
 
 };
 }

@@ -18,12 +18,12 @@ class Character{
     public:
     Character(Point location, int hitPoint, string name);
     virtual ~Character() = default;
-    virtual bool isAlive();
-    virtual double distance(Character* other);
-    virtual void hit(int num);
-    virtual string getName();
-    virtual Point getLocation();
-    virtual string print();
+    bool isAlive();
+    double distance(Character* other);
+    void hit(int num);
+    string getName();
+    Point getLocation();
+    virtual string print() = 0;
     int getHitPoints();
 
 };

@@ -29,10 +29,6 @@ namespace ariel{
         return this->location;
     }
 
-    string Character::print(){
-        return "";
-    }
-
     int Character::getHitPoints(){
         return this->hitPoint;
     }

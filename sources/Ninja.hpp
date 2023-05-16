@@ -18,7 +18,7 @@ class Ninja : public Character {
     void move( Character* enemy);
     void slash( Character* enemy);
     int getSpeed();
-    string print() override;
+    string print();
 };
 
 }

@@ -16,54 +16,76 @@ TEST_CASE("Point"){
     CHECK(p4.getX() == -5.5);
     CHECK_EQ(p1.distance(p3), 4.47);
  }
-
- TEST_CASE("initialize character"){
-    Point p1(1, 1), p2(2, 2), p3(3, 3);
-    Character c1(p1, 15, "Dani"), c2(p2, 10, "Beni");
-    CHECK(c1.isAlive());
-    CHECK(c2.isAlive());
-    CHECK(c1.getHitPoints() == 15);
-    CHECK_EQ(c2.getName(), "Beni");
-    
- }
  
- TEST_CASE("Cowboy"){
+ TEST_CASE("initialize Cowboy"){
    Cowboy cowboy1("Tibi", Point(1.0, 2.0)), cowboy2("Melo", Point(2, 3));
    CHECK(cowboy1.isAlive());
    CHECK(cowboy2.isAlive());
    CHECK_NOTHROW(cowboy1.shoot(&cowboy2));
    CHECK_EQ(cowboy1.getNumOfBoolets(), 6);
-   cowboy1.reload();
-   CHECK_EQ(cowboy1.getNumOfBoolets(), 12);
-   CHECK_EQ(cowboy2.hasboolets(), true);
    for(int i=0; i<6; i++){
       cowboy2.shoot(&cowboy1);
    }
    CHECK_THROWS(cowboy2.shoot(&cowboy1));
+   CHECK_FALSE(cowboy2.hasboolets());
+
  }
- TEST_CASE("Ninja"){
+
+ TEST_CASE("initialize Ninja"){
    Point p1(1, 1), p2(2, 2), p3(3, 3);
-   Ninja ninja1(p1, 50, "Nini", 15), ninja2(p2, 70, "Nini", 17);
-   CHECK(ninja1.isAlive());
-   CHECK(ninja2.isAlive());
-   CHECK(ninja1.getSpeed() == 15);
-   CHECK_NOTHROW(ninja1.move(&ninja2));
+   TrainedNinja tn1("Nini", p1), tn2("Shibi", p2);
+   CHECK(tn1.isAlive());
+   CHECK(tn2.isAlive());
+   CHECK(tn1.getSpeed() == 12);
+   CHECK(tn1.getHitPoints() == 120);
+   CHECK_NOTHROW(tn1.move(&tn2));
 
    YoungNinja yn("YN", Point(1, 2));
    CHECK(yn.getSpeed() == 14);
    CHECK(yn.getHitPoints() == 100);
+
+   OldNinja on("ON", Point(8, 3));
+   CHECK(on.getSpeed() == 8);
+   CHECK(on.getHitPoints() == 150);
+
+   CHECK_NOTHROW(tn1.print());
+   CHECK_NOTHROW(yn.print());
+   CHECK_NOTHROW(on.print());
  }
 
  TEST_CASE("Team"){
    Point p1(1, 1);
-   Character c1(p1, 15, "Dani");
    Cowboy cowboy1("Tibi", Point(1.0, 2.0)), cowboy2("Melo", Point(2, 3));
-   Ninja ninja1(p1, 50, "Nini", 15);
+   TrainedNinja tn1("Nini", p1);
    Team teamA(&cowboy1);
    Team teamB(&cowboy2);
-   CHECK_NOTHROW(teamA.add(&ninja1));
+   CHECK_NOTHROW(teamA.add(&tn1));
    CHECK(teamA.stillAlive() == 2);
-   CHECK_NOTHROW(teamA.attack(&teamB));
-   CHECK_FALSE(cowboy2.isAlive());
+   CHECK_NOTHROW(teamA.attack(&teamB));   
+ }
+
+ TEST_CASE("The Game"){
+    Point p1(1, 1), p2(2, 2), p3(3, 3);
+    TrainedNinja tn1("Nini", p1), tn2("Shibi", p2);
+    YoungNinja yn("YN", Point(1, 2));
+    OldNinja on("ON", Point(8, 3));
+    Cowboy cowboy1("Tibi", Point(1.0, 2.0)), cowboy2("Melo", Point(2, 3));
+    CHECK_THROWS(cowboy1.shoot(&cowboy1));
+    CHECK_THROWS(tn1.slash(&tn1));
+    cowboy1.reload();
+    CHECK_EQ(cowboy1.hasboolets(), true);
+    Team teamA(&cowboy1);
+    Team teamB(&tn1);
+    teamA.add(&cowboy2);
+    teamB.add(&tn2);
+    CHECK(teamA.stillAlive() == 2);
+    CHECK(teamB.stillAlive() == 2);
+    CHECK_NOTHROW(teamA.attack(&teamB));
+    if(teamB.stillAlive() == 0)
+    {
+        CHECK_FALSE(tn1.isAlive());
+        CHECK_FALSE(tn2.isAlive());
+        CHECK_THROWS(teamA.attack(&teamB));
+    }
 
  }
